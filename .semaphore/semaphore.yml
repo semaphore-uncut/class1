@@ -8,9 +8,14 @@ agent:
 blocks:
   - name: "Build"
     task:
+      secrets:
+        - name: class1-creds
       jobs:
       - name: "Job #1"
         commands:
+          - env | grep "AWS"
+          - ls /tmp/sec-example
+          - cat /tmp/sec-example
           - checkout
           - ls -1
           - ruby -v
