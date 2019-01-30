@@ -35,4 +35,7 @@ blocks:
         commands:
           - checkout
           - ls -1
+          - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH,gems-master
+          - bundle install --path vendor/bundle
+          - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
           - echo "done"
