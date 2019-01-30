@@ -39,3 +39,7 @@ blocks:
           - bundle install --path vendor/bundle
           - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
           - echo "done"
+
+promotions:
+  - name: Deploy to staging
+    pipeline_file: staging.yml

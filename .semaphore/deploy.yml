@@ -1,0 +1,19 @@
+version: v1.0
+name: Deploy to staging
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: "Deploy"
+    task:
+      jobs:
+      - name: "Job #1"
+        commands:
+          - checkout
+          - ls -1
+          - ruby -v
+          - sem-version ruby 2.5.3
+          - ruby -v
+          - echo "Deploying... done"
