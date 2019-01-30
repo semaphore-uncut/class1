@@ -24,6 +24,7 @@ blocks:
         commands:
           - checkout
           - bundle install --path vendor/bundle
+          - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
           - echo "done"
 
   - name: "Second build step"
