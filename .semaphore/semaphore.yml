@@ -20,3 +20,12 @@ blocks:
           - checkout
           - ls -1
           - echo "done"
+
+  - name: "Second build step"
+    task:
+      jobs:
+      - name: "Job #1"
+        commands:
+          - checkout
+          - ls -1
+          - echo "done"
