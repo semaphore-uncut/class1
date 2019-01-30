@@ -9,7 +9,13 @@ blocks:
   - name: "Build"
     task:
       jobs:
-      - name: Docker build
+      - name: "Job #1"
+        commands:
+          - checkout
+          - ls -1
+          - echo "done"
+
+      - name: "Job #2"
         commands:
           - checkout
           - ls -1
