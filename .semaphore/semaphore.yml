@@ -23,7 +23,7 @@ blocks:
       - name: "Job #2"
         commands:
           - checkout
-          - ls -1
+          - bundle install --path vendor/bundle
           - echo "done"
 
   - name: "Second build step"
