@@ -17,7 +17,7 @@ blocks:
           - sem-version ruby 2.5.3
           - ruby -v
           - sem-service start redis
-          - sem-service start postgres 11.6
+          - sem-service start postgres 10.6
           - echo "done"
 
       - name: "Job #2"
