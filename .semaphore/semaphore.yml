@@ -12,7 +12,7 @@ blocks:
         - name: aws-credentials
       env_vars:
         - name: CC
-          value: 8
+          value: "8"
         - name: URL
           value: www.google.com
       jobs:
