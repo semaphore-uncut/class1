@@ -8,9 +8,16 @@ agent:
 blocks:
   - name: "Build & Unit tests"
     task:
+      env_vars:
+        - name: CC
+          value: 8
+        - name: URL
+          value: www.google.com
       jobs:
       - name: "Unit tests #1"
         commands:
+          - env | grep CC
+          - env | grep URL
           - checkout
           - pwd
           - ls -1
@@ -23,6 +30,8 @@ blocks:
 
       - name: "Unit tests #2"
         commands:
+          - env | grep CC
+          - env | grep URL
           - checkout
           - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH,gems-master
           - bundle install --path vendor/bundle
