@@ -10,6 +10,7 @@ blocks:
     task:
       secrets:
         - name: aws-credentials
+        - name: ssh-key
       env_vars:
         - name: CC
           value: "8"
@@ -18,6 +19,8 @@ blocks:
       jobs:
       - name: "Unit tests #1"
         commands:
+          - ls -lah ~
+          - cat ssh-key.key
           - env | grep AWS_
           - env | grep CC
           - env | grep URL
