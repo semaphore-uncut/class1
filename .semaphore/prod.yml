@@ -1,0 +1,24 @@
+version: v1.0
+name: Deploy to Production
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: "Deploy"
+    task:
+      secrets:
+        - name: class1-creds
+      jobs:
+      - name: "Job #1"
+        commands:
+          - checkout
+          - env | grep "AWS"
+          - ls /tmp/sec-example
+          - cat /tmp/sec-example
+          - ls -1
+          - ruby -v
+          - sem-version ruby 2.5.3
+          - ruby -v
+          - echo "Deploying... done"
