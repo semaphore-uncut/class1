@@ -8,6 +8,8 @@ agent:
 blocks:
   - name: "Build & Unit tests"
     task:
+      secrets:
+        - name: aws-credentials
       env_vars:
         - name: CC
           value: 8
@@ -16,6 +18,7 @@ blocks:
       jobs:
       - name: "Unit tests #1"
         commands:
+          - env | grep AWS_
           - env | grep CC
           - env | grep URL
           - checkout
