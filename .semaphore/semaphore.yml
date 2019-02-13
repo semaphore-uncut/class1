@@ -17,6 +17,7 @@ blocks:
           - ls /tmp/sec-example
           - cat /tmp/sec-example
           - checkout
+          - pwd
           - ls -1
           - ruby -v
           - sem-version ruby 2.5.3
