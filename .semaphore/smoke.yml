@@ -22,7 +22,3 @@ blocks:
           - sem-version ruby 2.5.3
           - ruby -v
           - echo "Deploying... done"
-
-promotions:
-  - name: Run smoke tests
-    pipeline_file: smoke.yml
