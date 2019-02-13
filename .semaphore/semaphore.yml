@@ -1,21 +1,16 @@
 version: v1.0
-name: First pipeline example
+name: Example pipeline
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
 
 blocks:
-  - name: "Build"
+  - name: "Build & Unit tests"
     task:
-      secrets:
-        - name: class1-creds
       jobs:
-      - name: "Job #1"
+      - name: "Unit tests #1"
         commands:
-          - env | grep "AWS"
-          - ls /tmp/sec-example
-          - cat /tmp/sec-example
           - checkout
           - pwd
           - ls -1
@@ -26,7 +21,7 @@ blocks:
           - sem-service start postgres 10.6
           - echo "done"
 
-      - name: "Job #2"
+      - name: "Unit tests #2"
         commands:
           - checkout
           - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH,gems-master
@@ -34,10 +29,28 @@ blocks:
           - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
           - echo "done"
 
-  - name: "Second build step"
+  - name: "Integration tests"
     task:
       jobs:
       - name: "Job #1"
+        commands:
+          - checkout
+          - ls -1
+          - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH,gems-master
+          - bundle install --path vendor/bundle
+          - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
+          - echo "done"
+
+      - name: "Job #2"
+        commands:
+          - checkout
+          - ls -1
+          - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH,gems-master
+          - bundle install --path vendor/bundle
+          - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
+          - echo "done"
+
+      - name: "Job #3"
         commands:
           - checkout
           - ls -1

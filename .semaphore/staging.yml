@@ -8,10 +8,15 @@ agent:
 blocks:
   - name: "Deploy"
     task:
+      secrets:
+        - name: class1-creds
       jobs:
       - name: "Job #1"
         commands:
           - checkout
+          - env | grep "AWS"
+          - ls /tmp/sec-example
+          - cat /tmp/sec-example
           - ls -1
           - ruby -v
           - sem-version ruby 2.5.3
