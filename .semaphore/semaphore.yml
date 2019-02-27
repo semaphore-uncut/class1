@@ -48,11 +48,14 @@ blocks:
     task:
       secrets:
         - name: digitalocean-creds
+        - name: k8s-stg
       jobs:
       - name: "Job #1"
         commands:
           - echo $DO_KEY
-          - echo $DO_SECRET          
+          - echo $DO_SECRET       
+          - ls /home/semaphore/do-creds.json
+          - cat /home/semaphore/do-creds.json
           - checkout
           - ls -1
           - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH,gems-master
