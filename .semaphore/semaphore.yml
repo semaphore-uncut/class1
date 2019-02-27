@@ -46,9 +46,13 @@ blocks:
 
   - name: "Integration tests"
     task:
+      secrets:
+        - name: digitalocean-creds
       jobs:
       - name: "Job #1"
         commands:
+          - echo $DO_KEY
+          - echo $DO_SECRET          
           - checkout
           - ls -1
           - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH,gems-master
