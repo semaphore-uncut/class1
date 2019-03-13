@@ -87,4 +87,6 @@ promotions:
     pipeline_file: staging.yml
   - name: Deploy to beta
     pipeline_file: beta.yml
+    auto_promote_on:
+      - result: passed
 
