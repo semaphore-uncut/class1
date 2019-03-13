@@ -20,6 +20,8 @@ blocks:
       jobs:
       - name: "Unit tests #1"
         commands:
+          - ls /home/semaphore/demo.js
+          - cat /home/semaphore/demo.js
           - ls -lah ~
           - cat ssh-key.key
           - env | grep AWS_
