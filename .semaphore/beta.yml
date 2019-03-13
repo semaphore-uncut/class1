@@ -1,0 +1,17 @@
+version: v1.0
+name: Beta deployment pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: "Deploy"
+    task:
+      secrets:
+        - name: class1-creds
+      jobs:
+      - name: "Deploy"
+        commands:
+          - checkout
+          - echo "Deploying"
