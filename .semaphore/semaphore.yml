@@ -11,6 +11,7 @@ blocks:
       secrets:
         - name: aws-credentials
         - name: ssh-key
+        - name: class-demo
       env_vars:
         - name: CC
           value: "8"
