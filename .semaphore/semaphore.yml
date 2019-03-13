@@ -85,4 +85,6 @@ blocks:
 promotions:
   - name: Deploy to staging
     pipeline_file: staging.yml
+  - name: Deploy to beta
+    pipeline_file: beta.yml
 
