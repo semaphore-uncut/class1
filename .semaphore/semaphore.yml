@@ -24,7 +24,8 @@ blocks:
       - name: "Lint"
         commands:
           - checkout
-          - echo "Linting..."     
+          - echo "Linting..."
+          - exit 1
 
   - name: "Integration tests"
     task:
