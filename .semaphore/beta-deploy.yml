@@ -20,3 +20,7 @@ blocks:
           - ls -lah
           - pwd
           - echo "done"
+
+promations:
+  - name: Production env
+    pipeline_file: prod.yml
