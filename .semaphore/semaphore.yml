@@ -25,7 +25,6 @@ blocks:
         commands:
           - checkout
           - echo "Linting..."
-          - exit 0
 
   - name: "Integration tests"
     task:
