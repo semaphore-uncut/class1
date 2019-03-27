@@ -11,5 +11,7 @@ blocks:
       jobs:
       - name: "Unit tests #1"
         commands:
-          - ls /home/semaphore/demo.js
+          - checkout
+          - ls -lah
+          - pwd
           - echo "done"
