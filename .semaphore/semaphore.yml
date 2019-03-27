@@ -8,6 +8,11 @@ agent:
 blocks:
   - name: "Build & Unit tests"
     task:
+      epilogue:
+        commands:
+          - echo "After job commands"
+          - echo "Job result"
+          - echo $SEMAPHORE_JOB_RESULT
       jobs:
       - name: "Unit tests #1"
         commands:
@@ -15,10 +20,11 @@ blocks:
           - ls -lah
           - pwd
           - echo "done"
+          
       - name: "Lint"
         commands:
           - checkout
-          - echo "Linting..."          
+          - echo "Linting..."     
 
   - name: "Integration tests"
     task:
