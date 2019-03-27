@@ -8,6 +8,8 @@ agent:
 blocks:
   - name: "Beta deploy"
     task:
+      secrets:
+        - name: beta-creds
       epilogue:
         commands:
           - echo "After job commands"
@@ -16,6 +18,9 @@ blocks:
       jobs:
       - name: "Deploy"
         commands:
+          - env | grep "AWS"
+          - ls /home/semaphore/beta_creds.json
+          - cat /home/semaphore/beta_creds.json
           - checkout
           - ls -lah
           - pwd
