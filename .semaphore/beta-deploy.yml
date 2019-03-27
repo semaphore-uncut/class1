@@ -21,6 +21,6 @@ blocks:
           - pwd
           - echo "done"
 
-promations:
+promotions:
   - name: Production env
     pipeline_file: prod.yml
