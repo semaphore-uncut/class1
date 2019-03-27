@@ -15,7 +15,7 @@ blocks:
           - ls -lah
           - pwd
           - echo "done"
-      - name: "List"
-            commands:
-              - checkout
-              - echo "Linting..."          
+      - name: "Lint"
+        commands:
+          - checkout
+          - echo "Linting..."          
