@@ -1,0 +1,22 @@
+version: v1.0
+name: Beta deploy
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: "Beta deploy"
+    task:
+      epilogue:
+        commands:
+          - echo "After job commands"
+          - echo "Job result"
+          - echo $SEMAPHORE_JOB_RESULT
+      jobs:
+      - name: "Deploy"
+        commands:
+          - checkout
+          - ls -lah
+          - pwd
+          - echo "done"
