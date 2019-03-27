@@ -19,3 +19,13 @@ blocks:
         commands:
           - checkout
           - echo "Linting..."          
+
+  - name: "Integration tests"
+    task:
+      jobs:
+      - name: "Integ tests"
+        commands:
+          - checkout
+          - ls -lah
+          - pwd
+          - echo "done"       
