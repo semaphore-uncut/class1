@@ -17,6 +17,11 @@ blocks:
       - name: "Unit tests #1"
         commands:
           - checkout
+          - sem-service start postgres
+          - sem-service start redis
+          - ruby -v
+          - sem-version ruby 2.5.3
+          - ruby -v
           - ls -lah
           - pwd
           - echo "done"
