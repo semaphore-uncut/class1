@@ -36,3 +36,7 @@ blocks:
           - ls -lah
           - pwd
           - echo "done"       
+
+promotions:
+  - name: Deploy to staging
+    pipeline_file: stg-deploy.yml
