@@ -40,3 +40,6 @@ blocks:
 promotions:
   - name: Deploy to staging
     pipeline_file: stg-deploy.yml
+  - name: Beta deploy
+    pipeline_file: beta-deploy.yml
+ 
