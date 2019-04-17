@@ -8,8 +8,6 @@ agent:
 blocks:
   - name: "Deploy"
     task:
-      secrets:
-        - name: class1-creds
       jobs:
       - name: "Deploy"
         commands:
