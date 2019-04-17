@@ -17,3 +17,5 @@ blocks:
 promotions:
   - name: Production env
     pipeline_file: prod-deployment.yml
+  - name: Beta env
+    pipeline_file: beta.yml
