@@ -34,3 +34,7 @@ blocks:
         commands:
           - checkout
           - echo "done with integ tests"
+
+promotions:
+  - name: Staging env
+    pipeline_file: stg.yml
