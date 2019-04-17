@@ -16,6 +16,8 @@ blocks:
           - ruby -v
           - sem-version ruby 2.5.3
           - ruby -v
+          - sem-service start redis
+          - sem-service start postgres 11.2
           - echo "done 1"
 
   - name: "Unit tests"
