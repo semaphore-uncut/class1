@@ -12,4 +12,8 @@ blocks:
       - name: "Unit tests #1"
         commands:
           - checkout
-          - echo "done"
+          - echo "done 1"
+      - name: "Unit tests #2"
+        commands:
+          - checkout
+          - echo "done 2"
