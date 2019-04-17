@@ -13,3 +13,7 @@ blocks:
         commands:
           - checkout
           - echo "deploying.... done"
+
+promotions:
+  - name: Production env
+    pipeline_file: prod-deployment.yml
