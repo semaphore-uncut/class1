@@ -6,7 +6,16 @@ agent:
     os_image: ubuntu1804
 
 blocks:
-  - name: "Build & Unit tests"
+
+  - name: "Build"
+    task:
+      jobs:
+      - name: "Compile"
+        commands:
+          - checkout
+          - echo "done 1"
+
+  - name: "Unit tests"
     task:
       jobs:
       - name: "Unit tests #1"
@@ -18,7 +27,7 @@ blocks:
           - checkout
           - echo "done 2"
 
-  - name: "Ingration tests"
+  - name: "Integration tests"
     task:
       jobs:
       - name: "Integ tests"
