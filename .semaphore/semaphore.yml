@@ -17,3 +17,11 @@ blocks:
         commands:
           - checkout
           - echo "done 2"
+
+  - name: "Ingration tests"
+    task:
+      jobs:
+      - name: "Integ tests"
+        commands:
+          - checkout
+          - echo "done with integ tests"
