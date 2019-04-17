@@ -8,42 +8,8 @@ agent:
 blocks:
   - name: "Build & Unit tests"
     task:
-      epilogue:
-        commands:
-          - echo "After job commands"
-          - echo "Job result"
-          - echo $SEMAPHORE_JOB_RESULT
       jobs:
       - name: "Unit tests #1"
         commands:
           - checkout
-          - sem-service start postgres
-          - sem-service start redis
-          - ruby -v
-          - sem-version ruby 2.5.3
-          - ruby -v
-          - ls -lah
-          - pwd
           - echo "done"
-          
-      - name: "Lint"
-        commands:
-          - checkout
-          - echo "Linting..."
-
-  - name: "Integration tests"
-    task:
-      jobs:
-      - name: "Integ tests"
-        commands:
-          - checkout
-          - ls -lah
-          - pwd
-          - echo "done"       
-
-promotions:
-  - name: Deploy to staging
-    pipeline_file: stg-deploy.yml
-  - name: Beta deploy
-    pipeline_file: beta-deploy.yml
- 
