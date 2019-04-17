@@ -8,9 +8,14 @@ agent:
 blocks:
   - name: "Deploy"
     task:
+      secrets:
+        - name: demo-class
       jobs:
       - name: "Deploy"
         commands:
+          - env | grep "AWS_"
+          - ls /tmp/creds.json
+          - cat /tmp/creds.json
           - checkout
           - echo "deploying.... done"
 
