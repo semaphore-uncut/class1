@@ -13,6 +13,9 @@ blocks:
       - name: "Compile"
         commands:
           - checkout
+          - ruby -v
+          - sem-version ruby 2.5.3
+          - ruby -v
           - echo "done 1"
 
   - name: "Unit tests"
