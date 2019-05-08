@@ -18,6 +18,10 @@ blocks:
           - cat /tmp/creds.json
           - checkout
           - echo "deploying.... done"
+      - name: "Smoke test staging env"
+        commands:
+          - echo "all good"
+
 
 promotions:
   - name: Production env
