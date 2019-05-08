@@ -9,13 +9,13 @@ blocks:
   - name: "Deploy"
     task:
       secrets:
-        - name: demo-class
+        - name: aws-stg-creds
       jobs:
       - name: "Deploy"
         commands:
           - env | grep "AWS_"
-          - ls /tmp/creds.json
-          - cat /tmp/creds.json
+          - ls /home/semaphore/ec2_id_dsa
+          - cat /home/semaphore/ec2_id_dsa
           - checkout
           - echo "deploying.... done"
 
