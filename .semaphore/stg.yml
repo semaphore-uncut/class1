@@ -18,6 +18,10 @@ blocks:
           - cat /tmp/creds.json
           - checkout
           - echo "deploying.... done"
+
+  - name: "Smoke tests"
+    task:
+      jobs:
       - name: "Smoke test staging env"
         commands:
           - echo "all good"
