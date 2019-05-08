@@ -31,6 +31,10 @@ blocks:
         commands:
           - checkout
           - echo "done 2"
+      - name: "Unit tests #3"
+        commands:
+          - checkout
+          - echo "done 3"          
 
   - name: "Integration tests"
     task:
