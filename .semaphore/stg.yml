@@ -9,26 +9,17 @@ blocks:
   - name: "Deploy"
     task:
       secrets:
-        - name: aws-stg-creds
+        - name: stg-creds
       jobs:
       - name: "Deploy"
         commands:
           - env | grep "AWS_"
-          - ls /home/semaphore/ec2_id_dsa
-          - cat /home/semaphore/ec2_id_dsa
-          - checkout
-          - echo "deploying.... done"
-
-  - name: "Smoke tests"
-    task:
-      jobs:
-      - name: "Smoke test staging env"
-        commands:
-          - echo "all good"
+          - ls /tmp/password.txt
+          - cat /tmp/password.txt
 
 
-promotions:
-  - name: Production env
-    pipeline_file: prod-deployment.yml
-  - name: Beta env
-    pipeline_file: beta.yml
+#promotions:
+#  - name: Production env
+#    pipeline_file: prod-deployment.yml
+#  - name: Beta env
+#    pipeline_file: beta.yml
