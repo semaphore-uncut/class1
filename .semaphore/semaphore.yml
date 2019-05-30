@@ -3,7 +3,10 @@ name: Build & test ppl
 agent:
   machine:
     type: e1-standard-2
-    os_image: ubuntu1804
+
+  containers:
+    - name: main
+      image: semaphoreci/ruby:2.6.1
 
 blocks:
 
@@ -14,11 +17,6 @@ blocks:
         commands:
           - checkout
           - ruby -v
-          - sem-version ruby 2.5.3
-          - ruby -v
-          - sem-service start redis
-          - sem-service start postgres 11.2
-          - echo "done 1"
 
   - name: "Unit tests"
     task:
