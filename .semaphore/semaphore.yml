@@ -50,6 +50,4 @@ blocks:
 promotions:
   - name: Staging env
     pipeline_file: stg.yml
-    
-  - name: Beta env
-    pipeline_file: beta.yml    
+   
