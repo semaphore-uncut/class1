@@ -14,7 +14,7 @@ blocks:
       - name: "Compile"
         commands:
           - checkout
-          - sleep 3600
+          - sleep 2
           - ruby -v
       - name: "Lint"
         commands:
