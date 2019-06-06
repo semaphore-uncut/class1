@@ -50,7 +50,6 @@ blocks:
 promotions:
   - name: Staging env
     pipeline_file: stg.yml
-    auto_promote_on:
-      - result: passed
-        branch:
-          - master
+    
+  - name: Beta env
+    pipeline_file: beta.yml    
