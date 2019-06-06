@@ -4,10 +4,8 @@ name: Build & test ppl
 agent:
   machine:
     type: e1-standard-2
-
-  containers:
-    - name: main
-      image: semaphoreci/ruby:2.6.1
+  
+  os_image: ubuntu1804
 
 blocks:
 
