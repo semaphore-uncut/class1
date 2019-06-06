@@ -1,5 +1,6 @@
 version: v1.0
 name: Build & test ppl
+
 agent:
   machine:
     type: e1-standard-2
@@ -17,6 +18,10 @@ blocks:
         commands:
           - checkout
           - ruby -v
+      - name: "Lint"
+        commands:
+          - checkout
+          - echo "Lint"          
 
   - name: "Unit tests"
     task:
