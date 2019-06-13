@@ -47,6 +47,16 @@ blocks:
         commands:
           - checkout
           - echo "done with integ tests"
+          
+  - name: "Package a release"
+    dependencies: ["Unit tests", "Integration tests"]  
+    task:
+      jobs:
+      - name: "make release"
+        commands:
+          - checkout
+          - echo "done with integ tests"
+          
 
 promotions:
   - name: Staging env
