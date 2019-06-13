@@ -9,6 +9,7 @@ agent:
 blocks:
 
   - name: "Build"
+    dependencies: []
     task:
       jobs:
       - name: "Compile"
@@ -22,6 +23,7 @@ blocks:
           - echo "Lint"          
 
   - name: "Unit tests"
+    dependencies: ["Builds"]
     task:
       jobs:
       - name: "Unit tests #1"
@@ -38,6 +40,7 @@ blocks:
           - echo "done 3"          
 
   - name: "Integration tests"
+    dependencies: ["Builds"]  
     task:
       jobs:
       - name: "Integ tests"
