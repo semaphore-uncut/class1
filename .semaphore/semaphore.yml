@@ -19,6 +19,7 @@ blocks:
         commands:
           - uname -a
           - checkout
+          - sleep 3600
           - echo "done with integ tests"
 
   - name: "Build"  
