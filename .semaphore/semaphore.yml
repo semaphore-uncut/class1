@@ -9,7 +9,6 @@ agent:
 blocks:
 
   - name: "Run something on macOS"
-    dependencies: []  
     task:
       agent:
         machine:
@@ -22,8 +21,7 @@ blocks:
           - checkout
           - echo "done with integ tests"
 
-  - name: "Build"
-    dependencies: []    
+  - name: "Build"  
     task:
       agent:
         machine:
@@ -43,8 +41,7 @@ blocks:
           - checkout
           - echo "Lint"          
 
-  - name: "Unit tests"
-    dependencies: ["Build", "Run something on macOS"]  
+  - name: "Unit tests" 
     task:
       agent:
         machine:
@@ -66,8 +63,7 @@ blocks:
           - checkout
           - echo "done 3"          
 
-  - name: "Integration tests"
-    dependencies: ["Build"]  
+  - name: "Integration tests" 
     task:
       jobs:
       - name: "Integ tests"
@@ -76,7 +72,6 @@ blocks:
           - echo "done with integ tests"
           
   - name: "Package a release"
-    dependencies: ["Unit tests", "Integration tests"]  
     task:
       jobs:
       - name: "make release"
