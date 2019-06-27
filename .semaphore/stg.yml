@@ -16,6 +16,14 @@ blocks:
           - env | grep "AWS_"
           - ls /tmp/password.txt
           - cat /tmp/password.txt
+          
+  - name: "Smoke test"
+    task:
+      jobs:
+      - name: "Test deployment"
+        commands:
+          - echo "test"
+          
 
 promotions:
   - name: Beta env
