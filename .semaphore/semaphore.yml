@@ -8,21 +8,8 @@ agent:
 
 blocks:
 
-  - name: "Run something on macOS"
-    task:
-      agent:
-        machine:
-          type: a1-standard-4
-          os_image: macos-mojave      
-      jobs:
-      - name: "make release"
-        commands:
-          - uname -a
-          - checkout
-          - sleep 3600
-          - echo "done with integ tests"
-
-  - name: "Build"  
+  - name: "Build"
+    dependencies: []
     task:
       agent:
         machine:
@@ -40,9 +27,27 @@ blocks:
       - name: "Lint"
         commands:
           - checkout
-          - echo "Lint"          
+          - echo "Lint"     
+
+  - name: "Unit tests on macOS"
+    dependencies: ["Build"]
+    task:
+      agent:
+        machine:
+          type: a1-standard-4
+          os_image: macos-mojave      
+      jobs:
+      - name: "make release"
+        commands:
+          - uname -a
+          - checkout
+          - sleep 3600
+          - echo "done with integ tests"
+
+      
 
   - name: "Unit tests" 
+    dependencies: ["Build"]  
     task:
       agent:
         machine:
@@ -65,6 +70,7 @@ blocks:
           - echo "done 3"          
 
   - name: "Integration tests" 
+    dependencies: ["Unit tests", "Unit tests on macOS"]  
     task:
       jobs:
       - name: "Integ tests"
@@ -73,6 +79,7 @@ blocks:
           - echo "done with integ tests"
           
   - name: "Package a release"
+    dependencies: ["Integration tests"]    
     task:
       jobs:
       - name: "make release"
