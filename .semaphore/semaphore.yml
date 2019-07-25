@@ -41,7 +41,7 @@ blocks:
         commands:
           - uname -a
           - checkout
-          - sleep 3600
+          - sleep 5
           - echo "done with integ tests"
 
       
