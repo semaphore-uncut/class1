@@ -22,7 +22,7 @@ blocks:
         commands:
           - uname -a        
           - checkout
-          - sleep 3600
+          - sleep 3
           - ruby -v
       - name: "Lint"
         commands:
