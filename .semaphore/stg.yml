@@ -9,13 +9,11 @@ blocks:
   - name: "Deploy"
     task:
       secrets:
-        - name: stg-creds
+        - name: demo6
       jobs:
       - name: "Deploy"
         commands:
           - env | grep "AWS_"
-          - ls /tmp/password.txt
-          - cat /tmp/password.txt
           
   - name: "Smoke test"
     task:
