@@ -17,6 +17,14 @@ blocks:
         containers:
           - name: main
             image: semaphoreci/ruby:2.6.1    
+          - name: db
+            image: postgres:9.6
+            env_vars:
+              - name: POSTGRES_PASSWORD
+                value: keyboard-cat
+          - name: cache
+            image: redis:5.0
+
       jobs:
       - name: "Compile"
         commands:
