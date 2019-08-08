@@ -67,6 +67,7 @@ blocks:
           - uname -a
           - free -g
           - checkout
+          - sleep 3600
           - echo "done 1"
       - name: "Unit tests #2"
         commands:
