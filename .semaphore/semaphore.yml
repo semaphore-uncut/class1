@@ -64,10 +64,10 @@ blocks:
       jobs:
       - name: "Unit tests #1"
         commands:
+          - sleep 3600
           - uname -a
           - free -g
           - checkout
-          - sleep 3600
           - echo "done 1"
       - name: "Unit tests #2"
         commands:
