@@ -19,6 +19,7 @@ blocks:
           commands:
             - checkout
             - echo "Lint"
+            - ls /sdfsdfwd
         - name: Sec Audit
           commands:
             - echo "sec audit... done"
