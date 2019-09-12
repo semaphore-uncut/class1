@@ -19,9 +19,6 @@ blocks:
           commands:
             - checkout
             - echo "Lint"
-        - name: Sec Audit
-          commands:
-            - echo "sec audit... done"
       env_vars:
         - name: ENV
           value: test
@@ -53,12 +50,33 @@ blocks:
         - name: job 1
           commands:
             - ls /
-            - sleep 3600
             - echo "hello"
         - name: job 2
           commands:
             - ls /
             - echo "hello"
+  - name: Sec Audit
+    dependencies:
+      - Build
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands:
+            - 'ls '
+        - name: 'Job #2'
+          commands:
+            - 'ls '
+        - name: 'Job #3'
+          commands:
+            - 'ls '
+  - name: Integ test
+    dependencies:
+      - Sec Audit
+      - Unit tests
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands: []
 promotions:
   - name: Staging env
     pipeline_file: stg.yml
