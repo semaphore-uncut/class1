@@ -17,10 +17,13 @@ blocks:
           
   - name: "Smoke test"
     task:
+      secrets:
+        - name: example
       jobs:
       - name: "Test deployment"
         commands:
           - echo "test"
+          - env | grep "AWS"
           
 
 promotions:
