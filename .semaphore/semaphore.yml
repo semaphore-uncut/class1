@@ -8,20 +8,6 @@ blocks:
   - name: Build
     dependencies: []
     task:
-      agent:
-        machine:
-          type: e1-standard-2
-          os_image: ubuntu1804
-        containers:
-          - name: main
-            image: 'semaphoreci/ruby:2.6.1'
-          - name: db
-            image: 'postgres:9.6'
-            env_vars:
-              - name: POSTGRES_PASSWORD
-                value: keyboard-cat
-          - name: cache
-            image: 'redis:5.0'
       jobs:
         - name: Test
           commands:
@@ -36,6 +22,20 @@ blocks:
         - name: Sec Audit
           commands:
             - echo "sec audit... done"
+      env_vars:
+        - name: ENV
+          value: test
+        - name: ENV_MODE
+          value: beta
+        - name: FOO_3
+          value: BAR_3
+      prologue:
+        commands:
+          - echo "Hello from Prologue"
+      epilogue:
+        on_fail:
+          commands:
+            - echo "curl my-dns"
 promotions:
   - name: Staging env
     pipeline_file: stg.yml
