@@ -1,103 +1,41 @@
 version: v1.0
 name: Build & test ppl
-
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
-
 blocks:
-
-  - name: "Build"
+  - name: Build
     dependencies: []
     task:
       agent:
         machine:
           type: e1-standard-2
+          os_image: ubuntu1804
         containers:
           - name: main
-            image: semaphoreci/ruby:2.6.1    
+            image: 'semaphoreci/ruby:2.6.1'
           - name: db
-            image: postgres:9.6
+            image: 'postgres:9.6'
             env_vars:
               - name: POSTGRES_PASSWORD
                 value: keyboard-cat
           - name: cache
-            image: redis:5.0
-
+            image: 'redis:5.0'
       jobs:
-      - name: "Compile"
-        commands:
-          - uname -a        
-          - checkout
-          - sleep 4
-          - ruby -v
-      - name: "Lint"
-        commands:
-          - checkout
-          - echo "Lint"     
-
-  - name: "Unit tests on macOS"
-    dependencies: ["Build"]
-    task:
-      agent:
-        machine:
-          type: a1-standard-4
-          os_image: macos-mojave      
-      jobs:
-      - name: "make release"
-        commands:
-          - uname -a
-          - checkout
-          - sleep 5
-          - echo "done with integ tests"
-
-      
-
-  - name: "Unit tests" 
-    dependencies: ["Build"]  
-    task:
-      agent:
-        machine:
-          type: e1-standard-4
-          os_image: ubuntu1804      
-      jobs:
-      - name: "Unit tests #1"
-        commands:
-          - sleep 3600
-          - uname -a
-          - free -g
-          - checkout
-          - echo "done 1"
-      - name: "Unit tests #2"
-        commands:
-          - checkout
-          - echo "done 2"
-      - name: "Unit tests #3"
-        commands:
-          - checkout
-          - echo "done 3"          
-
-  - name: "Integration tests" 
-    dependencies: ["Unit tests", "Unit tests on macOS"]  
-    task:
-      jobs:
-      - name: "Integ tests"
-        commands:
-          - checkout
-          - echo "done with integ tests"
-          
-  - name: "Package a release"
-    dependencies: ["Integration tests"]    
-    task:
-      jobs:
-      - name: "make release"
-        commands:
-          - checkout
-          - echo "done with integ tests"
-          
-
+        - name: Test
+          commands:
+            - uname -a
+            - checkout
+            - sleep 4
+            - ruby -v
+        - name: Lint
+          commands:
+            - checkout
+            - echo "Lint"
+        - name: Sec Audit
+          commands:
+            - echo "sec audit... done"
 promotions:
   - name: Staging env
     pipeline_file: stg.yml
-   
