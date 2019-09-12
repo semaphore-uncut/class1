@@ -53,6 +53,7 @@ blocks:
         - name: job 1
           commands:
             - ls /
+            - sleep 3600
             - echo "hello"
         - name: job 2
           commands:
