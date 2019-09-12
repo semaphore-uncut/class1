@@ -19,7 +19,6 @@ blocks:
           commands:
             - checkout
             - echo "Lint"
-            - ls /sdfsdfwd
         - name: Sec Audit
           commands:
             - echo "sec audit... done"
@@ -37,6 +36,28 @@ blocks:
         on_fail:
           commands:
             - echo "curl my-dns"
+  - name: Unit tests
+    dependencies:
+      - Build
+    task:
+      agent:
+        machine:
+          type: e1-standard-2
+          os_image: ubuntu1804
+        containers:
+          - name: main
+            image: 'semaphoreci/ruby:2.6-browsers'
+          - name: pg
+            image: 'postgres:9.6'
+      jobs:
+        - name: job 1
+          commands:
+            - ls /
+            - echo "hello"
+        - name: job 2
+          commands:
+            - ls /
+            - echo "hello"
 promotions:
   - name: Staging env
     pipeline_file: stg.yml
