@@ -69,6 +69,14 @@ blocks:
         - name: 'Job #3'
           commands:
             - 'ls '
+      secrets:
+        - name: demo6
+        - name: digitalocean-creds
+      env_vars:
+        - name: FOO_1
+          value: BAR_1
+        - name: FOO_2
+          value: BAR_2
   - name: Integ test
     dependencies:
       - Checks on macOS
@@ -90,6 +98,14 @@ blocks:
         - name: macOS Unit tests
           commands:
             - echo "Hi"
+  - name: Release
+    dependencies:
+      - Integ test
+    task:
+      jobs:
+        - name: Docker image push
+          commands:
+            - echo "docker push"
 promotions:
   - name: Staging env
     pipeline_file: stg.yml
