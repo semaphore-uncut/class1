@@ -9,17 +9,18 @@ blocks:
     dependencies: []
     task:
       jobs:
-        - name: Test
+        - name: Build our Go app
           commands:
             - uname -a
             - checkout
             - sleep 4
             - ruby -v
+            - echo "app" /tmp/app
+            - artifact push workflow /tmp/app
         - name: Lint
           commands:
             - checkout
             - echo "Lint" > /tmp/logs
-            - ls /asdfasfd
       env_vars:
         - name: ENV
           value: test
@@ -51,12 +52,15 @@ blocks:
       jobs:
         - name: job 1
           commands:
-            - ls /
+            - 'ls '
             - echo "hello"
         - name: job 2
           commands:
             - ls /
             - echo "hello"
+      prologue:
+        commands:
+          - artifact pull workflow /tmp/app
   - name: Sec Audit
     dependencies:
       - Build
@@ -64,7 +68,7 @@ blocks:
       jobs:
         - name: 'Job #1'
           commands:
-            - 'ls '
+            - ls -lah
         - name: 'Job #2'
           commands:
             - 'ls '
@@ -79,6 +83,9 @@ blocks:
           value: BAR_1
         - name: FOO_2
           value: BAR_2
+      prologue:
+        commands:
+          - artifact pull workflow /tmp/app
   - name: Integ test
     dependencies:
       - Checks on macOS
