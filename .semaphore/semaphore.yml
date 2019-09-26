@@ -75,7 +75,7 @@ blocks:
       - Unit tests
     task:
       jobs:
-        - name: 'Job #1'
+        - name: 'Job #x'
           commands: []
 promotions:
   - name: Staging env
