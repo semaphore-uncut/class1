@@ -60,7 +60,7 @@ blocks:
             - echo "hello"
       prologue:
         commands:
-          - artifact pull workflow /tmp/app
+          - artifact pull workflow app
   - name: Sec Audit
     dependencies:
       - Build
@@ -85,7 +85,7 @@ blocks:
           value: BAR_2
       prologue:
         commands:
-          - artifact pull workflow /tmp/app
+          - artifact pull workflow app
   - name: Integ test
     dependencies:
       - Checks on macOS
