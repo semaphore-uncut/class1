@@ -71,12 +71,25 @@ blocks:
             - 'ls '
   - name: Integ test
     dependencies:
+      - Checks on macOS
       - Sec Audit
       - Unit tests
     task:
       jobs:
         - name: 'Job #x'
           commands: []
+  - name: Checks on macOS
+    dependencies:
+      - Build
+    task:
+      agent:
+        machine:
+          type: a1-standard-4
+          os_image: macos-mojave
+      jobs:
+        - name: macOS Unit tests
+          commands:
+            - echo "Hi"
 promotions:
   - name: Staging env
     pipeline_file: stg.yml
