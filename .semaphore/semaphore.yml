@@ -15,7 +15,7 @@ blocks:
             - checkout
             - sleep 4
             - ruby -v
-            - echo "app" /tmp/app
+            - echo "app" > /tmp/app
             - artifact push workflow /tmp/app
         - name: Lint
           commands:
