@@ -18,7 +18,8 @@ blocks:
         - name: Lint
           commands:
             - checkout
-            - echo "Lint"
+            - echo "Lint" > /tmp/logs
+            - ls /asdfasfd
       env_vars:
         - name: ENV
           value: test
@@ -33,6 +34,7 @@ blocks:
         on_fail:
           commands:
             - echo "curl my-dns"
+            - artifact push job /tmp/logs
   - name: Unit tests
     dependencies:
       - Build
