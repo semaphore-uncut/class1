@@ -50,7 +50,7 @@ gem 'barber'
 # a pre release here to make we don't do a full release prior to
 # baking here. Remove 2.2.0.pre no later than Jan 2019 and move back
 # to the standard releases
-gem 'message_bus', '2.2.0.pre.1'
+gem 'message_bus', '3.3.7'
 
 gem 'rails_multisite'
 

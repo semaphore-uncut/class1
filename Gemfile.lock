@@ -194,7 +194,7 @@ GEM
       mini_mime (>= 0.1.1)
     maxminddb (0.1.21)
     memory_profiler (0.9.12)
-    message_bus (2.2.0.pre.1)
+    message_bus (3.3.7)
       rack (>= 1.1.3)
     metaclass (0.0.4)
     method_source (0.8.2)
@@ -288,7 +288,7 @@ GEM
     public_suffix (3.0.3)
     puma (3.11.4)
     r2 (0.2.7)
-    rack (2.0.6)
+    rack (2.2.3)
     rack-mini-profiler (1.0.1)
       rack (>= 1.2.0)
     rack-openid (1.3.1)
@@ -493,7 +493,7 @@ DEPENDENCIES
   mail (= 2.7.1.rc1)
   maxminddb
   memory_profiler
-  message_bus (= 2.2.0.pre.1)
+  message_bus (= 3.3.7)
   mini_mime
   mini_racer
   mini_scheduler
